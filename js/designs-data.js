@@ -10,12 +10,12 @@
    =========================================================== */
 const DESIGNS = [
   {
-    id: "example-chair",            // unique, lowercase, no spaces (used in the page URL)
-    name: "Example Chair",
-    status: "available",   // "available" or "kickstarter"
+    id: "Scaffolder Sideboard",            // unique, lowercase, no spaces (used in the page URL)
+    name: "Scaffolder Sideboard",
+    status: "kickstarter",   // "available" or "kickstarter"
     price: "£000",                  // shown for available designs
-    shortDescription: "One line shown on the grid card.",
-    description: "Longer text shown on the design page.",
+    shortDescription: "Sleek, modern sideboard made from reclaimed scaffolding that develops character with your home.",
+    description: "Sleek, modern sideboard made from reclaimed scaffolding that develops character with your home. Pollished scaffold poles provide a perfect level of contrast between the deep wood finsih and unique hardware.",
     specs: ["Material: placeholder", "Dimensions: placeholder"],   // optional, can be []
     images: [   // each image needs a src and alt text (describe the image)
       { src: "assets/images/designs/example-chair/1.svg", alt: "Example Chair, standard product image" },   // FIRST = grid card image
@@ -29,7 +29,7 @@ const DESIGNS = [
   {
     id: "example-table",            // unique, lowercase, no spaces (used in the page URL)
     name: "Example Table",
-    status: "available",   // "available" or "kickstarter"
+    status: "kickstarter",   // "available" or "kickstarter"
     price: "£000",                  // shown for available designs
     shortDescription: "One line shown on the grid card.",
     description: "Longer text shown on the design page.",

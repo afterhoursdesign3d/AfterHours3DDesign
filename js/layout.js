@@ -9,7 +9,7 @@ var SITE = {
   tiktok: "https://www.tiktok.com/@afterhours.design3d",
   instagram: "https://www.instagram.com/afterhours.design3d/",
   // EDIT: footer description
-  footerText: "Design studio also offering product design, CAD and 3D Visualisation services."
+  footerText: "Design studio also offering Product Design, CAD and 3D Visualisation services."
 };
 // EDIT: navigation links (same list is used in the header and the footer)
 var NAV = [["designs","Designs"],["services","Services"],["about","About"],["pricing","Pricing"],["contact","Contact"]];

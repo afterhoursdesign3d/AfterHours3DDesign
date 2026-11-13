@@ -5,13 +5,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Rubik:wght@600;800&display=swap" rel="stylesheet">
 <!-- EDIT: favicon files live in /assets (favicon.svg adapts to light and dark mode). Change the ?v= number to force browsers to reload it -->
 <link rel="icon" href="favicon.ico?v=3" sizes="32x32"><link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3"><link rel="stylesheet" href="css/style.css"></head>
-<body data-header="hide-on-scroll">
+<body data-header="hide-on-scroll" data-footer="no-follow">
 <a class="skip" href="#main">Skip to content</a>
-<header class="site-header"><div class="container bar">
-<!-- EDIT: replace assets/logo.svg and assets/logo-white.svg with your logo files -->
-<a class="logo" href="index.html"><img class="logo-dark" src="assets/logo.svg" alt="After Hours Design"><img class="logo-light" src="assets/logo-white.svg" alt=""></a>
-<button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
-<nav id="nav" class="nav"><a href="designs.html">Designs</a><a href="services.html">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="contact.html" aria-current="page">Contact</a></nav></div></header>
+<script src="js/layout.js"></script><script>writeHeader();</script>
 <main id="main">
 <section class="container split page-head contact-split"><div class="contact-intro"><h1>Contact us</h1>
 <p class="lead">Have an idea, a need for our services, or a general query? Get in touch, we would love to hear from you. If you haven't had a reply after two business days, please assume the form isn't working and email us directly.</p>
@@ -28,15 +24,9 @@
 <label>Email *<input type="email" name="email" required></label>
 <label>Subject<input name="user_subject"></label>
 <label>Message *<textarea name="message" rows="6" required></textarea></label>
-<div class="form-actions"><button class="btn" type="submit">Send message</button><!-- EDIT: email address --><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></div>
+<div class="form-actions"><button class="btn" type="submit">Send message</button><!-- EDIT: email address --><a data-email href="mailto:">email</a></div>
 <p id="form-status" role="status" aria-live="polite"></p></form></section>
 </main>
-<footer class="site-footer"><div class="container">
-<div class="foot-grid foot-grid--3">
-<div><img src="assets/logo.svg" alt="After Hours Design" class="foot-logo"><!-- EDIT: footer description --><p>Product design, CAD and 3D visualisation. Placeholder description.</p></div>
-<div><h3>Pages</h3><a href="designs.html">Designs</a><a href="services.html">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div>
-
-<div><h3>Contact</h3><!-- EDIT: email address --><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></div></div>
-<div class="foot-base"><span>&copy; <span data-year></span> After Hours Design</span><span class="legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="cookies.html" class="cookie-link">Cookie Policy</a></span></div></div></footer>
+<script>writeFooter();</script>
 <script src="js/main.js"></script>
 </body></html>

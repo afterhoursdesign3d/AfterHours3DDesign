@@ -9,3 +9,5 @@
 
 **Cookie Policy link:** hidden in the footer for now. To show it, set `--cookie-link: inline;` at the top of `css/style.css`.
 **Favicon:** `assets/favicon.svg` (grey, switches for dark mode). If a browser keeps the old icon, bump the `?v=3` number in the `<link rel="icon">` tags.
+
+**Header, footer, nav links, email and social links:** edit `js/layout.js` once. It applies to every page.

@@ -20,7 +20,7 @@ if(f)f.addEventListener('submit',function(e){e.preventDefault();
  fetch(f.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)})
  .then(function(r){return r.json();}).then(function(d){
   if(d.success){s.textContent='Thanks, your message has been sent.';f.reset();}else{throw 0;}})
- .catch(function(){s.textContent='Something went wrong. Please email us directly at hello@yourdomain.com.';})  /* EDIT: your email */
+ .catch(function(){s.textContent='Something went wrong. Please email us directly at '+SITE.email+'.';})
  .finally(function(){btn.disabled=false;btn.textContent=t;});});
 var g=document.querySelectorAll('.gallery .ph');
 if(g.length){var lb=document.createElement('div');lb.className='lightbox';lb.hidden=true;lb.innerHTML='<button class="lb-close" aria-label="Close">&times;</button><img alt="">';document.body.appendChild(lb);

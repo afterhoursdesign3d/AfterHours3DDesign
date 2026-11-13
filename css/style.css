@@ -135,3 +135,8 @@ body.nav-open::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.3
 /* ===== v6: tighter space between header and page headings ===== */
 .page-head{padding-top:var(--s6)}
 @media(max-width:900px){.page-head{padding-top:var(--s4)}}
+
+/* ===== v6: tighter space between the contact form and the footer ===== */
+#form-status{margin:0}#form-status:empty{display:none}
+.contact-split{padding-bottom:var(--s6)}
+@media(max-width:900px){.contact-split{padding-bottom:var(--s4)}}

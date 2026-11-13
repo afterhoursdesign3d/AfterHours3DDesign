@@ -68,7 +68,7 @@ body[data-header=transparent] .site-header:not(.solid) .nav a{color:#fff}
 .terms{border-bottom:1px solid var(--line)}.term{display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);padding:var(--s4) 0;border-top:1px solid var(--line)}
 .term h3{margin:0;font-size:1.5rem}.term p{margin:0;max-width:none}.term-cta{padding:var(--s6) var(--pad) var(--s12)}
 /* service pages */
-.svc-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s8);align-items:stretch;min-height:calc(100vh - 80px);align-content:center;padding-top:var(--s4);padding-bottom:var(--s4)}
+.svc-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s8);align-items:stretch;align-content:start;padding-top:max(var(--s4),calc((100vh - 80px - min(100vh - 200px,760px))/2));padding-bottom:var(--s4)}
 .svc-hero .ph{width:min(100%,calc(min(100vh - 200px,760px)*.8));justify-self:end}
 .svc-text{display:flex;flex-direction:column}.svc-body{margin:auto 0}.svc-body p{margin-bottom:var(--s4)}
 .gallery-sec{padding-top:var(--s8)}.gallery{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);padding:var(--s3) 0 var(--s8)}
@@ -98,7 +98,7 @@ body[data-header=transparent] .site-header:not(.solid) .nav a{color:#fff}
 @media(max-width:900px){
 .foot-grid{grid-template-columns:1fr 1fr;grid-template-areas:"brand brand" "pages follow" "pages contact";gap:var(--s4) var(--s6)}
 .foot-grid>div:nth-child(1){grid-area:brand}.foot-grid>div:nth-child(2){grid-area:pages}.foot-grid>div:nth-child(3){grid-area:follow}.foot-grid>div:nth-child(4){grid-area:contact}
-.foot-grid>div:first-child{grid-column:auto}
+
 /* right-hand drawer menu */
 .menu-btn{position:relative;z-index:2}
 .nav{display:flex;position:fixed;top:0;right:0;bottom:0;left:auto;width:min(320px,82vw);flex-direction:column;gap:4px;padding:96px var(--s3) var(--s3);background:#fff;border:0;border-left:1px solid var(--line);transform:translateX(100%);visibility:hidden;transition:transform .25s,visibility .25s;z-index:1}
@@ -116,3 +116,12 @@ body.nav-open::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.3
 .foot-grid--3{grid-template-areas:"brand brand" "pages contact"}.foot-grid--3>div:nth-child(3){grid-area:contact}
 .svc-hero{padding-bottom:var(--s4)}.gallery-sec{padding-top:var(--s4)}.gallery-sec p{margin-bottom:var(--s4)}.gallery{padding-top:0}}
 @media(max-width:700px){.gallery{grid-template-columns:1fr 1fr;gap:var(--s1)}}
+
+/* ===== v5 refinements ===== */
+/* service page: equal space above and below the description */
+.gallery-sec{padding-top:var(--s4)}.gallery-sec p{margin-bottom:0}.gallery{padding-top:var(--s8)}
+/* contact + about: heading stays top, copy centred vertically against the form / image */
+.about-split{align-items:stretch}.about-intro,.contact-intro{position:relative}.about-copy p:last-child{margin-bottom:0}
+@media(min-width:901px){
+.contact-intro p,.about-copy{position:absolute;top:50%;transform:translateY(-50%);left:0;right:0;margin:0}}
+@media(max-width:900px){.gallery-sec{padding-top:0}.gallery-sec p{margin-bottom:var(--s4)}.gallery{padding-top:0}}

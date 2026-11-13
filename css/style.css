@@ -87,7 +87,7 @@ body[data-header=transparent] .site-header:not(.solid) .nav a{color:#fff}
 .product-group{padding-bottom:var(--s8)}.product-group+.product-group{border-top:1px solid var(--line);padding-top:var(--s8)}
 .product-grid{padding-bottom:0}.product-sec{padding-bottom:var(--s4)}.product-card p:last-child{margin-bottom:0}.meta{margin:0}
 /* one underline style: links, nav, "Back this project" */
-.more,.back{text-decoration:none}.svc-card:hover .more,.back:hover,.nav a:hover,.nav a[aria-current]{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.more,.back{text-decoration:none}.svc-card:hover .more,.product-card:hover .more,.back:hover,.nav a:hover,.nav a[aria-current]{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
 .more{border:0}.nav a{border:0;padding:8px 0}
 .arr{width:.9em;height:.9em;vertical-align:-.1em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .back .arr{margin-right:.45em}.more .arr{margin-left:.45em}.arr-l{transform:scaleX(-1)}
@@ -129,3 +129,5 @@ body.nav-open::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.3
 @media(max-width:900px){.gallery-sec{padding-top:0}.gallery-sec p{margin-bottom:var(--s4)}.gallery{padding-top:0}}
 
 .cookie-link{display:var(--cookie-link)}
+
+.product-card .meta .more{color:var(--text)}

@@ -12,9 +12,9 @@
 <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
 <nav id="nav" class="nav"><a href="designs.html">Designs</a><a href="services.html">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="contact.html" aria-current="page">Contact</a></nav></div></header>
 <main id="main">
-<section class="container split page-head"><div><h1>Contact us</h1>
+<section class="container split page-head contact-split"><div class="contact-intro"><h1>Contact us</h1>
 <p class="lead">Have an idea, a need for our services, or a general query? Get in touch, we would love to hear from you. If you haven't had a reply after two business days, please assume the form isn't working and email us directly.</p>
-<!-- EDIT: email address --><p><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p></div>
+</div>
 <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
 <!-- ================================================= -->
 <!-- PASTE YOUR WEB3FORMS ACCESS KEY ON THE LINE BELOW -->
@@ -27,14 +27,14 @@
 <label>Email *<input type="email" name="email" required></label>
 <label>Subject<input name="user_subject"></label>
 <label>Message *<textarea name="message" rows="6" required></textarea></label>
-<button class="btn" type="submit">Send message</button>
+<div class="form-actions"><button class="btn" type="submit">Send message</button><!-- EDIT: email address --><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></div>
 <p id="form-status" role="status" aria-live="polite"></p></form></section>
 </main>
 <footer class="site-footer"><div class="container">
-<div class="foot-grid">
+<div class="foot-grid foot-grid--3">
 <div><img src="assets/logo.svg" alt="After Hours Design" class="foot-logo"><!-- EDIT: footer description --><p>Product design, CAD and 3D visualisation. Placeholder description.</p></div>
 <div><h3>Pages</h3><a href="designs.html">Designs</a><a href="services.html">Services</a><a href="about.html">About</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a></div>
-<div><h3>Follow</h3><!-- EDIT: TikTok URL --><a href="https://www.tiktok.com/@yourhandle">TikTok</a><!-- EDIT: Instagram URL --><a href="https://www.instagram.com/yourhandle">Instagram</a></div>
+
 <div><h3>Contact</h3><!-- EDIT: email address --><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></div></div>
 <div class="foot-base"><span>&copy; <span data-year></span> After Hours Design</span><span class="legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="cookies.html">Cookie Policy</a></span></div></div></footer>
 <script src="js/main.js"></script>

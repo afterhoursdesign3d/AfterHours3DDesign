@@ -14,7 +14,7 @@ if(list){
   html+='<section class="product-group"><div class="product-sec"><h2>'+g[1]+'</h2><p class="lead">'+g[2]+'</p></div><div class="product-grid">'+
   items.map(function(d){var im=(d.images||[]).map(norm);
    return '<a class="product-card" href="design.html?id='+encodeURIComponent(d.id)+'"><div class="ph r45">'+(im[0]?ph(im[0].src,im[0].alt||d.name):'')+(im[1]?ph(im[1].src,im[1].alt||d.name+' in use','alt'):'')+'</div>'+
-   '<h3>'+esc(d.name)+'</h3><p>'+esc(d.shortDescription)+'</p><p class="meta">'+(g[0]==='available'?'<span class="price">'+esc(d.price)+'</span>':'<span class="more">Back this project</span>')+'</p></a>';}).join('')+'</div></section>';
+   '<h3>'+esc(d.name)+'</h3><p>'+esc(d.shortDescription)+'</p><p class="meta">'+(g[0]==='available'?'<span class="price">'+esc(d.price)+'</span>':'<span class="price">Back this project</span>')+'</p></a>';}).join('')+'</div></section>';
  });
  list.innerHTML=html||'<p class="lead">No designs yet. Check back soon.</p>';
 }

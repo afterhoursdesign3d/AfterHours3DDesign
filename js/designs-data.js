@@ -12,35 +12,65 @@ const DESIGNS = [
   {
     id: "example-chair",            // unique, lowercase, no spaces (used in the page URL)
     name: "Example Chair",
-    status: "available",
+    status: "available",   // "available" or "kickstarter"
     price: "£000",                  // shown for available designs
     shortDescription: "One line shown on the grid card.",
     description: "Longer text shown on the design page.",
     specs: ["Material: placeholder", "Dimensions: placeholder"],   // optional, can be []
-    images: [
-      "assets/images/designs/example-chair/1.jpg",   // FIRST = grid card image
-      "assets/images/designs/example-chair/2.jpg",   // SECOND = hover image (in scene / in action)
-      "assets/images/designs/example-chair/3.jpg"
+    images: [   // each image needs a src and alt text (describe the image)
+      { src: "assets/images/designs/example-chair/1.svg", alt: "Example Chair, standard product image" },   // FIRST = grid card image
+      { src: "assets/images/designs/example-chair/2.svg", alt: "Example Chair in a room setting" },   // SECOND = hover image (in scene / in action)
+      { src: "assets/images/designs/example-chair/3.svg", alt: "Example Chair, close-up detail" },   // further images appear in the gallery on the design page
+      { src: "assets/images/designs/example-chair/4.svg", alt: "Example Chair, close-up detail" }   // further images appear in the gallery on the design page
     ],
-    buyUrl: "https://example.com/buy",
-    kickstarterUrl: ""
+    buyUrl: "https://example.com/buy",              // used for available designs
+    kickstarterUrl: ""        // used for kickstarter designs
   },
   {
-    id: "example-table", name: "Example Table", status: "available", price: "£000",
-    shortDescription: "One line shown on the grid card.", description: "Longer text shown on the design page.",
-    specs: [], images: ["assets/images/designs/example-table/1.jpg","assets/images/designs/example-table/2.jpg"],
-    buyUrl: "https://example.com/buy", kickstarterUrl: ""
+    id: "example-table",            // unique, lowercase, no spaces (used in the page URL)
+    name: "Example Table",
+    status: "available",   // "available" or "kickstarter"
+    price: "£000",                  // shown for available designs
+    shortDescription: "One line shown on the grid card.",
+    description: "Longer text shown on the design page.",
+    specs: [],   // optional, can be []
+    images: [   // each image needs a src and alt text (describe the image)
+      { src: "assets/images/designs/example-table/1.svg", alt: "Example Table, standard product image" },   // FIRST = grid card image
+      { src: "assets/images/designs/example-table/2.svg", alt: "Example Table in a room setting" },   // SECOND = hover image (in scene / in action)
+      { src: "assets/images/designs/example-table/3.svg", alt: "Example Table, close-up detail" }   // further images appear in the gallery on the design page
+    ],
+    buyUrl: "https://example.com/buy",              // used for available designs
+    kickstarterUrl: ""        // used for kickstarter designs
   },
   {
-    id: "example-lamp", name: "Example Lamp", status: "kickstarter", price: "",
-    shortDescription: "One line shown on the grid card.", description: "Longer text shown on the design page.",
-    specs: ["Material: placeholder"], images: ["assets/images/designs/example-lamp/1.jpg","assets/images/designs/example-lamp/2.jpg"],
-    buyUrl: "", kickstarterUrl: "https://www.kickstarter.com/"
+    id: "example-lamp",            // unique, lowercase, no spaces (used in the page URL)
+    name: "Example Lamp",
+    status: "kickstarter",   // "available" or "kickstarter"
+    price: "",                  // shown for available designs
+    shortDescription: "One line shown on the grid card.",
+    description: "Longer text shown on the design page.",
+    specs: ["Material: placeholder"],   // optional, can be []
+    images: [   // each image needs a src and alt text (describe the image)
+      { src: "assets/images/designs/example-lamp/1.svg", alt: "Example Lamp, standard product image" },   // FIRST = grid card image
+      { src: "assets/images/designs/example-lamp/2.svg", alt: "Example Lamp in a room setting" },   // SECOND = hover image (in scene / in action)
+      { src: "assets/images/designs/example-lamp/3.svg", alt: "Example Lamp, close-up detail" }   // further images appear in the gallery on the design page
+    ],
+    buyUrl: "",              // used for available designs
+    kickstarterUrl: "https://www.kickstarter.com/"        // used for kickstarter designs
   },
   {
-    id: "example-shelf", name: "Example Shelf", status: "kickstarter", price: "",
-    shortDescription: "One line shown on the grid card.", description: "Longer text shown on the design page.",
-    specs: [], images: ["assets/images/designs/example-shelf/1.jpg"],
-    buyUrl: "", kickstarterUrl: "https://www.kickstarter.com/"
+    id: "example-shelf",            // unique, lowercase, no spaces (used in the page URL)
+    name: "Example Shelf",
+    status: "kickstarter",   // "available" or "kickstarter"
+    price: "",                  // shown for available designs
+    shortDescription: "One line shown on the grid card.",
+    description: "Longer text shown on the design page.",
+    specs: [],   // optional, can be []
+    images: [   // each image needs a src and alt text (describe the image)
+      { src: "assets/images/designs/example-shelf/1.svg", alt: "Example Shelf, standard product image" },   // FIRST = grid card image
+      { src: "assets/images/designs/example-shelf/2.svg", alt: "Example Shelf in a room setting" }   // SECOND = hover image (in scene / in action)
+    ],
+    buyUrl: "",              // used for available designs
+    kickstarterUrl: "https://www.kickstarter.com/"        // used for kickstarter designs
   }
 ];

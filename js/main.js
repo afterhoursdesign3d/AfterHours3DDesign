@@ -3,11 +3,15 @@
 var h=document.querySelector('.site-header'),mode=document.body.dataset.header,last=0;
 function onScroll(){var y=window.scrollY;
  if(mode==='transparent'){h.classList.toggle('solid',y>40||!!document.querySelector('.nav.open'));}
- else{h.classList.toggle('hidden',y>last&&y>80);}
+ else{h.classList.toggle('hidden',y>last&&y>80&&!document.querySelector('.nav.open'));}
  last=y;}
 window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 var b=document.querySelector('.menu-btn'),n=document.getElementById('nav');
 b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);if(mode==='transparent')h.classList.toggle('solid',o||window.scrollY>40);});
+function closeNav(){n.classList.remove('open');b.setAttribute('aria-expanded',false);document.body.classList.remove('nav-open');if(mode==='transparent')h.classList.toggle('solid',window.scrollY>40);}
+b.addEventListener('click',function(){document.body.classList.toggle('nav-open',n.classList.contains('open'));});
+document.addEventListener('click',function(e){if(document.body.classList.contains('nav-open')&&!e.target.closest('.nav,.menu-btn'))closeNav();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNav();});
 document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear();});
 var f=document.getElementById('contact-form');
 if(f)f.addEventListener('submit',function(e){e.preventDefault();

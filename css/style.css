@@ -131,3 +131,7 @@ body.nav-open::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.3
 .cookie-link{display:var(--cookie-link)}
 
 .product-card .meta .more{color:var(--text)}
+
+/* ===== v6: tighter space between header and page headings ===== */
+.page-head{padding-top:var(--s6)}
+@media(max-width:900px){.page-head{padding-top:var(--s4)}}

@@ -140,3 +140,7 @@ body.nav-open::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.3
 #form-status{margin:0}#form-status:empty{display:none}
 .contact-split{padding-bottom:var(--s6)}
 @media(max-width:900px){.contact-split{padding-bottom:var(--s4)}}
+
+/* ===== v7: more vertical space between rows of designs ===== */
+.product-grid{column-gap:var(--s4);row-gap:var(--s8)}
+@media(max-width:560px){.product-grid{column-gap:var(--s2);row-gap:var(--s6)}}

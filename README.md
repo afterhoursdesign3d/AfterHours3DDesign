@@ -6,3 +6,6 @@
 **Links and email:** search every file for `EDIT:`. Header and footer are repeated on each page.
 **Colours, fonts, radius, spacing:** variables at the top of `css/style.css`.
 **Host:** upload the whole folder to any static host (Netlify, GitHub Pages, etc.).
+
+**Cookie Policy link:** hidden in the footer for now. To show it, set `--cookie-link: inline;` at the top of `css/style.css`.
+**Favicon:** `assets/favicon.svg` (grey, switches for dark mode). If a browser keeps the old icon, bump the `?v=2` number in the `<link rel="icon">` tags.

@@ -1,6 +1,8 @@
 /* ===== SITE SETTINGS: change colours, fonts, spacing here ===== */
 :root{--bg:#fff;--text:#0A0A0A;--accent:#0A0A0A;--accent-hover:#333;--grey:#6B6B6B;--line:#E5E5E5;--block:#F4F4F4;
---head:'Rubik',sans-serif;--body:'Inter',sans-serif;--radius:6px;--s1:8px;--s2:16px;--s3:24px;--s4:32px;--s6:48px;--s8:64px;--s12:96px;--max:1280px;--logo-h:28px;--pad:clamp(20px,4vw,48px)}
+--head:'Rubik',sans-serif;--body:'Inter',sans-serif;--radius:6px;--s1:8px;--s2:16px;--s3:24px;--s4:32px;--s6:48px;--s8:64px;--s12:96px;--max:1280px;--logo-h:28px;
+/* SWITCH: Cookie Policy footer link. none = hidden, inline = shown */
+--cookie-link:none;--pad:clamp(20px,4vw,48px)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font:400 1.125rem/1.6 var(--body)}
 h1,h2{font:800 clamp(2.25rem,5vw,3.75rem)/1.05 var(--head);margin:0 0 var(--s3)}h2{font-size:clamp(1.5rem,3vw,2.25rem)}
@@ -125,3 +127,5 @@ body.nav-open::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.3
 @media(min-width:901px){
 .contact-intro p,.about-copy{position:absolute;top:50%;transform:translateY(-50%);left:0;right:0;margin:0}}
 @media(max-width:900px){.gallery-sec{padding-top:0}.gallery-sec p{margin-bottom:var(--s4)}.gallery{padding-top:0}}
+
+.cookie-link{display:var(--cookie-link)}

@@ -11,3 +11,5 @@
 **Favicon:** `assets/favicon.svg` (grey, switches for dark mode). If a browser keeps the old icon, bump the `?v=3` number in the `<link rel="icon">` tags.
 
 **Header, footer, nav links, email and social links:** edit `js/layout.js` once. It applies to every page.
+
+**Pages inside each service (e.g. "Product Renders" inside 3D Visualisation):** edit `js/services-data.js` only. Copy or delete one `{ ... }` block. Each one appears as a row on its service page and gets its own page automatically. If a service has none, the list section disappears.

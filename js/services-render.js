@@ -12,11 +12,11 @@ var box=document.querySelector('[data-work-service]');
 if(box){
  var key=box.getAttribute('data-work-service'),sp=SERVICE_PAGES[key];
  var items=SERVICE_WORK.filter(function(w){return w.service===key;});
- if(!sp||!items.length){box.remove();}   // nothing to show: the whole section disappears
+ if(!sp||!PAGES[key]||!items.length){box.remove();}   // nothing to show: the whole section disappears
  else{
-  box.innerHTML='<h2>Within '+esc(sp.name)+'</h2>'+(sp.intro?'<p class="lead">'+esc(sp.intro)+'</p>':'')+
+  box.innerHTML='<h2>Within '+esc(PAGES[key].title)+'</h2>'+(sp.intro?'<p class="lead">'+esc(sp.intro)+'</p>':'')+
    '<div class="work-list">'+items.map(function(w){var im=(w.images||[]).map(norm)[0];
-    return '<a class="work-row" href="service-detail.html?id='+encodeURIComponent(w.id)+'"><div class="ph r32">'+(im?ph(im.src,im.alt||w.name):'')+'</div>'+
+    return '<a class="work-row" href="'+pageUrl('service-detail','?id='+encodeURIComponent(w.id))+'"><div class="ph r32">'+(im?ph(im.src,im.alt||w.name):'')+'</div>'+
      '<div class="work-text"><h3>'+esc(w.name)+'</h3><p>'+esc(w.shortDescription)+'</p><span class="more">Read more'+ARR+'</span></div></a>';}).join('')+'</div>';
  }
 }
@@ -25,14 +25,14 @@ if(box){
 var root=document.getElementById('work-root');
 if(root){
  var id=new URLSearchParams(location.search).get('id'),w=SERVICE_WORK.filter(function(x){return x.id===id;})[0];
- if(!w||!SERVICE_PAGES[w.service]){
-  root.innerHTML='<section class="container page-head"><h1>Page not found</h1><p><a href="services.html">Back to services</a></p></section>';return;}
- var s=SERVICE_PAGES[w.service],im=(w.images||[]).map(norm),main=im[0],gal=im.slice(1);
+ if(!w||!PAGES[w.service]){
+  root.innerHTML='<section class="container page-head"><h1>Page not found</h1><p><a href="'+pageUrl('services')+'">Back to '+pageTitle('services')+'</a></p></section>';return;}
+ var im=(w.images||[]).map(norm),main=im[0],gal=im.slice(1);
  document.title=w.name+' | After Hours Design';
- root.innerHTML='<section class="container svc-hero"><div class="svc-text"><a class="back" href="'+esc(s.page)+'">'+ARL+'Back to '+esc(s.name)+'</a>'+
-  '<div class="svc-body"><h1>'+esc(w.name)+'</h1><p>'+esc(w.description)+'</p><a class="btn" href="contact.html">Get a quote</a></div></div>'+
+ root.innerHTML='<section class="container svc-hero"><div class="svc-text"><a class="back" href="'+pageUrl(w.service)+'">'+ARL+'Back to '+esc(PAGES[w.service].title)+'</a>'+
+  '<div class="svc-body"><h1>'+esc(w.name)+'</h1><p>'+esc(w.description)+'</p><a class="btn" href="'+pageUrl('contact')+'">Get a quote</a></div></div>'+
   '<div class="ph r45">'+(main?ph(main.src,main.alt||w.name):'')+'</div></section>'+
-  (gal.length?'<section class="container gallery-sec">'+(w.galleryText?'<p>'+esc(w.galleryText)+'</p>':'')+'<div class="gallery">'+
+  (gal.length?'<section class="container gallery-sec'+(w.galleryText?'':' no-text')+'">'+(w.galleryText?'<p>'+esc(w.galleryText)+'</p>':'')+'<div class="gallery">'+
    gal.map(function(g){return '<div class="ph r43">'+ph(g.src,g.alt||w.name)+'</div>';}).join('')+'</div></section>':'');
 }
 })();

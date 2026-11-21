@@ -162,3 +162,9 @@ body.nav-open::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.3
 .work-sec+.gallery-sec{padding-top:var(--s4)}
 @media(max-width:900px){.work-sec{padding-top:var(--s6)}.work-row{gap:var(--s4)}.work-sec+.gallery-sec{padding-top:0}}
 @media(max-width:700px){.work-row{grid-template-columns:1fr;gap:var(--s2);padding:var(--s3) 0}.work-row h3{font-size:1.25rem}.work-row p{margin-bottom:var(--s1)}}
+
+/* ===== v11: service pages end with the work list; no spacing for an empty gallery line ===== */
+.work-sec{padding-bottom:var(--s8)}
+main>.svc-hero:last-child{padding-bottom:var(--s8)}
+.gallery-sec.no-text .gallery{padding-top:0}
+@media(max-width:900px){.work-sec,main>.svc-hero:last-child{padding-bottom:var(--s6)}}

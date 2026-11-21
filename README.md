@@ -13,3 +13,7 @@
 **Header, footer, nav links, email and social links:** edit `js/layout.js` once. It applies to every page.
 
 **Pages inside each service (e.g. "Product Renders" inside 3D Visualisation):** edit `js/services-data.js` only. Copy or delete one `{ ... }` block. Each one appears as a row on its service page and gets its own page automatically. If a service has none, the list section disappears.
+
+**Clean URLs:** links and the address bar show /services instead of /services.html automatically. Switch it off with `cleanUrls: false` at the top of `js/layout.js`.
+
+**Page names and links:** every link to a page comes from the `PAGES` list at the top of `js/layout.js`. To rename a page, rename the file, then change its `file` there. Nav, footer, buttons, cards and back links all follow. In HTML, write links as `<a data-page="contact">Get a quote</a>`.

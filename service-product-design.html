@@ -10,18 +10,12 @@
 <script src="js/layout.js"></script><script>writeHeader();</script>
 <main id="main">
 <section class="container svc-hero">
-<div class="svc-text"><a class="back" href="services.html"><svg class="arr arr-l" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8h13M9 2.5 14.5 8 9 13.5"/></svg>Back to services</a>
-<div class="svc-body"><h1>Product Design</h1><!-- EDIT: service description --><p>Developing ideas into purposeful, considered product concepts.</p><a class="btn" href="contact.html">Get a quote</a></div></div>
+<div class="svc-text"><a class="back" data-page="services"><svg class="arr arr-l" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8h13M9 2.5 14.5 8 9 13.5"/></svg>Back to services</a>
+<div class="svc-body"><h1>Product Design</h1><!-- EDIT: service description --><p>Developing ideas into purposeful, considered product concepts.</p><a class="btn" data-page="contact">Get a quote</a></div></div>
 <!-- EDIT: main image, 4:5 portrait (r45) -->
 <div class="ph r45"><img src="assets/images/services/product-design-hero.jpg" alt="EDIT ALT TEXT: describe this image" onerror="this.remove()"></div></section>
 <!-- WORK LIST: filled in from js/services-data.js (add or remove the pages inside this service there). Hidden automatically if empty. -->
 <section class="container work-sec" data-work-service="product-design"></section>
-<section class="container gallery-sec"><!-- EDIT: text above the gallery --><p>Placeholder text about this service and the work shown below.</p>
-<div class="gallery"><!-- EDIT: gallery image 1, 4:3 (click to enlarge) (r43) -->
-<div class="ph r43"><img src="assets/images/services/product-design-1.jpg" alt="EDIT ALT TEXT: describe this image" onerror="this.remove()"></div><!-- EDIT: gallery image 2, 4:3 (click to enlarge) (r43) -->
-<div class="ph r43"><img src="assets/images/services/product-design-2.jpg" alt="EDIT ALT TEXT: describe this image" onerror="this.remove()"></div><!-- EDIT: gallery image 3, 4:3 (click to enlarge) (r43) -->
-<div class="ph r43"><img src="assets/images/services/product-design-3.jpg" alt="EDIT ALT TEXT: describe this image" onerror="this.remove()"></div><!-- EDIT: gallery image 4, 4:3 (click to enlarge) (r43) -->
-<div class="ph r43"><img src="assets/images/services/product-design-4.jpg" alt="EDIT ALT TEXT: describe this image" onerror="this.remove()"></div></div></section>
 </main>
 <script>writeFooter();</script>
 <script src="js/services-data.js"></script><script src="js/services-render.js"></script>

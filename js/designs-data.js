@@ -73,4 +73,19 @@ images: [ // each image needs a src and alt text (describe the image)
 buyUrl: "", // used for available designs
 kickstarterUrl: "https://www.kickstarter.com/" // used for kickstarter designs
 }
+{
+id: "example", // unique, lowercase, no spaces (used in the page URL)
+name: "Example",
+status: "kickstarter", // "available" or "kickstarter"
+price: "", // shown for available designs
+shortDescription: "One line shown on the grid card.",
+description: "Longer text shown on the design page.",
+specs: [], // optional, can be []
+images: [ // each image needs a src and alt text (describe the image)
+{ src: "assets/images/designs/example-shelf/1.svg", alt: "Example Shelf, standard product image" }, // FIRST = grid card image
+{ src: "assets/images/designs/example-shelf/2.svg", alt: "Example Shelf in a room setting" } // SECOND = hover image (in scene / in action)
+],
+buyUrl: "", // used for available designs
+kickstarterUrl: "https://www.kickstarter.com/" // used for kickstarter designs
+}
 ];

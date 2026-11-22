@@ -72,7 +72,7 @@ images: [ // each image needs a src and alt text (describe the image)
 ],
 buyUrl: "", // used for available designs
 kickstarterUrl: "https://www.kickstarter.com/" // used for kickstarter designs
-}
+},
 {
 id: "example", // unique, lowercase, no spaces (used in the page URL)
 name: "Example",

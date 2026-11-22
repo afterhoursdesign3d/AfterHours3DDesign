@@ -12,8 +12,8 @@ const DESIGNS = [
 {
 id: "scaffolder-sideboard", // unique, lowercase, no spaces (used in the page URL)
 name: "Scaffolder Sideboard",
-status: "kickstarter", // "available" or "kickstarter"
-price: "£000", // shown for available designs
+status: "available", // "available" or "kickstarter"
+price: "£9.99", // shown for available designs
 shortDescription: "Sleek, modern sideboard made from reclaimed scaffolding that develops character with your home.",
 description: "Sleek, modern sideboard made from reclaimed scaffolding that develops character with your home. Polished scaffold poles provide a perfect level of contrast between the deep wood finish and unique hardware.",
 specs: ["Material: placeholder", "Dimensions: placeholder"], // optional, can be []

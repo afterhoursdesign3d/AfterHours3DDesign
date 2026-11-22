@@ -1,5 +1,5 @@
 /* ===========================================================
-   SITE HEADER + FOOTER - EDIT HERE ONCE, APPLIES TO EVERY PAGE
+   SITE HEADER + FOOTER + SETTINGS - EDIT HERE ONCE, APPLIES TO EVERY PAGE
    Every page just calls writeHeader() / writeFooter().
    All page links on the site come from the PAGES list below.
    =========================================================== */
@@ -9,11 +9,18 @@ var SITE = {
   // EDIT: social links
   tiktok: "https://www.tiktok.com/@afterhours.design3d",
   instagram: "https://www.instagram.com/afterhours.design3d/",
-  // EDIT: footer description
+  // EDIT: your website address, no slash at the end. When the site is built it is copied into every page's
+  // search and share tags and the sitemap, so this is the only place to change it when you get your real domain.
+  url: "https://afterhours3ddesign.afterhours-design3d.workers.dev",
+  // EDIT: where you work from and who you serve. Used for search engines (structured data).
+  place: { city: "Hemel Hempstead", region: "Hertfordshire", country: "GB", areaServed: ["Hemel Hempstead", "Hertfordshire", "London"] },
   // EDIT: true = hide ".html" in links and the address bar (services.html shows as /services).
-  // Works on GitHub Pages, Netlify and Vercel. Set to false if your host shows "page not found" for /services.
   // It switches itself off when you open the files locally, so local testing still works.
   cleanUrls: true,
+  // EDIT: Cloudflare Web Analytics token (free, uses no cookies, so no cookie banner is needed).
+  // Cloudflare dashboard > Web Analytics > your site > the "token" in the snippet. Leave "" to turn it off.
+  analyticsToken: "673107ce73df44b6b84a8cb74bf83a83",
+  // EDIT: footer description
   footerText: "Design studio also offering Product Design, CAD and 3D Visualisation services."
 };
 
@@ -31,12 +38,10 @@ var SITE = {
 var PAGES = {
   "home":             { file: "index.html",                  title: "Home" },
   "designs":          { file: "designs.html",                title: "Designs" },
-  "design":           { file: "design.html",                 title: "Design" },            // the one page used for every individual design
   "services":         { file: "services.html",               title: "Services" },
   "product-design":   { file: "service-product-design.html", title: "Product Design" },
   "cad-design":       { file: "service-cad-design.html",     title: "CAD Design" },
   "3d-visualisation": { file: "service-3d-visualisation.html", title: "3D Visualisation" },
-  "service-detail":   { file: "service-detail.html",         title: "Service" },           // the one page used for every item inside a service
   "about":            { file: "about.html",                  title: "About" },
   "pricing":          { file: "pricing.html",                title: "Pricing" },
   "contact":          { file: "contact.html",                title: "Contact" },
@@ -47,19 +52,28 @@ var PAGES = {
 // EDIT: which pages appear in the header and footer nav, in order (use the keys above)
 var NAV = ["designs", "services", "about", "pricing", "contact"];
 
-// address of a page, optionally with a query like "?id=my-design"
-function pageUrl(key, query) {
+// The pages for each design and each item inside a service are created by tools/build.js from the data files.
+// They live in these folders, e.g. designs/scaffolder-sideboard.html (shown as /designs/scaffolder-sideboard).
+var ITEM_FOLDERS = { design: "designs", service: "services" };
+
+// address of a page
+function pageUrl(key) {
   if (!PAGES[key]) { console.warn("Unknown page key: " + key); return "#"; }
-  return PAGES[key].file + (query || "");
+  return PAGES[key].file;
 }
+// address of one design ("design") or one item inside a service ("service")
+function itemUrl(type, id) { return ITEM_FOLDERS[type] + "/" + encodeURIComponent(id) + ".html"; }
+function isLocal() { return location.protocol === "file:" || /^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname); }
 function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&amp;") : key; }
 
 (function () {
-  // which nav item is "current": service pages count as Services, individual designs count as Designs
+  // which nav item is "current": service pages and their items count as Services, designs count as Designs
   var file = location.pathname.split("/").pop() || "index.html";
   if (!/\.html$/.test(file)) file += ".html";   // clean URLs (/services) still match
+  var segs = location.pathname.split("/").filter(Boolean), folder = segs.length > 1 ? segs[segs.length - 2] : "";
   var key = Object.keys(PAGES).filter(function (k) { return PAGES[k].file === file; })[0];
-  var current = { "product-design": "services", "cad-design": "services", "3d-visualisation": "services", "service-detail": "services", "design": "designs" }[key] || key;
+  var current = folder === ITEM_FOLDERS.design ? "designs" : folder === ITEM_FOLDERS.service ? "services"
+    : { "product-design": "services", "cad-design": "services", "3d-visualisation": "services" }[key] || key;
 
   window.writeHeader = function () {
     var links = NAV.map(function (k) {
@@ -90,14 +104,18 @@ function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&a
   };
 
   document.addEventListener("DOMContentLoaded", function () {
-    // links written as <a data-page="contact"> get their address from PAGES (optional data-query="?id=...")
+    // links written as <a data-page="contact"> get their address from PAGES
     document.querySelectorAll("a[data-page]").forEach(function (a) {
-      a.setAttribute("href", pageUrl(a.getAttribute("data-page"), a.getAttribute("data-query") || ""));
+      a.setAttribute("href", pageUrl(a.getAttribute("data-page")));
     });
 
-    // CLEAN URLS: tidy every internal link and the address bar (this must run after the step above)
-    var local = location.protocol === "file:" || /^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname);
-    if (SITE.cleanUrls && !local) {
+    // on design / service item pages a <base> tag points links at the site root, so "#main" style links need the full page address
+    if (document.querySelector("base")) {
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) { a.setAttribute("href", location.pathname + location.search + a.getAttribute("href")); });
+    }
+
+    // CLEAN URLS: tidy every internal link and the address bar (this must run after the steps above)
+    if (SITE.cleanUrls && !isLocal()) {
       var clean = function (u) { return u.replace(/(^|\/)index\.html(?=$|[?#])/, "$1").replace(/\.html(?=$|[?#])/, ""); };
       document.querySelectorAll("a[href]").forEach(function (a) {
         var h = a.getAttribute("href");

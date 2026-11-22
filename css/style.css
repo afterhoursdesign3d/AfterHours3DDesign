@@ -168,3 +168,8 @@ body.nav-open::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.3
 main>.svc-hero:last-child{padding-bottom:var(--s8)}
 .gallery-sec.no-text .gallery{padding-top:0}
 @media(max-width:900px){.work-sec,main>.svc-hero:last-child{padding-bottom:var(--s6)}}
+
+/* ===== v12: no lines under the last item of the "Within ..." list or above the footer on those pages ===== */
+.work-list{border-bottom:0}
+.work-sec{padding-bottom:0}
+body:has(.work-sec) .site-footer{border-top:0}

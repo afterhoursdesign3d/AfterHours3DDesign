@@ -27,3 +27,11 @@ if(g.length){var lb=document.createElement('div');lb.className='lightbox';lb.hid
  g.forEach(function(p){p.style.cursor='zoom-in';p.addEventListener('click',function(){var i=p.querySelector('img');if(!i)return;lb.querySelector('img').src=i.src;lb.hidden=false;});});
  lb.addEventListener('click',function(){lb.hidden=true;});document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true;});}
 })();
+
+/* Cloudflare Web Analytics (cookieless). The token is SITE.analyticsToken in js/layout.js. */
+(function(){
+var t=window.SITE&&SITE.analyticsToken;
+if(!t)return;
+var s=document.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';
+s.setAttribute('data-cf-beacon',JSON.stringify({token:t}));document.head.appendChild(s);
+})();

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://afterhours3ddesign.afterhours-design3d.workers.dev/sitemap.xml

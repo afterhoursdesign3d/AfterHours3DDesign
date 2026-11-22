@@ -21,18 +21,7 @@ const ctx = { location: { pathname: "/", protocol: "https:", hostname: "x", sear
   window: {}, console };
 vm.createContext(ctx);
 vm.runInContext(read("js/layout.js"), ctx);
-
-vm.runInContext(read("js/designs-data.js"), ctx);
-console.log("Designs data loaded");
-
-vm.runInContext(read("js/services-data.js"), ctx);
-console.log("Services data loaded");
-
-const data = vm.runInContext(
-  "({ DESIGNS, SERVICE_WORK })",
-  ctx
-);
-
+const data = vm.runInContext(read("js/designs-data.js") + ";\n" + read("js/services-data.js") + ";\n({ DESIGNS, SERVICE_WORK })", ctx);
 const { SITE, PAGES, ITEM_FOLDERS } = ctx;
 const base = SITE.url.replace(/\/$/, "");
 

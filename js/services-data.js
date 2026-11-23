@@ -103,7 +103,22 @@ const SERVICE_WORK = [
       { src: "assets/images/work/prototyping-support/4.svg", alt: "Prototyping Support, example 3" },   // further images fill the gallery on this item's page
       { src: "assets/images/work/prototyping-support/5.svg", alt: "Prototyping Support, example 4" }   // further images fill the gallery on this item's page
     ]
-  }
+  },
+  {
+   id: "tester",             // unique, lowercase, no spaces (used in the page URL)
+   service: "product-design",   // "product-design", "cad-design" or "3d-visualisation"
+   name: "This is a test",
+   shortDescription: "Test test test.",   // one line shown in the list on the service page
+   description: "Wawaweewa, I'm a test.",   // longer text shown on this item's own page
+   galleryText: "Testers.",   // short line above the gallery. Optional: use "" for none (its spacing is removed too)
+   images: [   // each image needs a src and alt text (describe the image)
+     { src: "assets/images/work/prototyping-support/1.svg", alt: "Prototyping Support, main image" },   // FIRST = large main image on this item's page and the picture in the list
+     { src: "assets/images/work/prototyping-support/2.svg", alt: "Prototyping Support, example 1" },   // further images fill the gallery on this item's page
+     { src: "assets/images/work/prototyping-support/3.svg", alt: "Prototyping Support, example 2" },   // further images fill the gallery on this item's page
+     { src: "assets/images/work/prototyping-support/4.svg", alt: "Prototyping Support, example 3" },   // further images fill the gallery on this item's page
+     { src: "assets/images/work/prototyping-support/5.svg", alt: "Prototyping Support, example 4" }   // further images fill the gallery on this item's page
+   ]
+ }
 ];
 
 /* Intro line shown under each "Within ..." heading. The service names and page links come from

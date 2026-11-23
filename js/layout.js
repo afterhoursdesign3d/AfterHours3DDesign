@@ -39,9 +39,9 @@ var PAGES = {
   "home":             { file: "index.html",                  title: "Home" },
   "designs":          { file: "designs.html",                title: "Designs" },
   "services":         { file: "services.html",               title: "Services" },
-  "product-design":   { file: "service-product-design.html", title: "Product Design" },
-  "cad-design":       { file: "service-cad-design.html",     title: "CAD Design" },
-  "3d-visualisation": { file: "service-3d-visualisation.html", title: "3D Visualisation" },
+  "product-design":   { file: "services/product-design.html", title: "Product Design" },
+  "cad-design":       { file: "services/cad-design.html",     title: "CAD Design" },
+  "3d-visualisation": { file: "services/3d-visualisation.html", title: "3D Visualisation" },
   "about":            { file: "about.html",                  title: "About" },
   "pricing":          { file: "pricing.html",                title: "Pricing" },
   "contact":          { file: "contact.html",                title: "Contact" },
@@ -54,26 +54,30 @@ var NAV = ["designs", "services", "about", "pricing", "contact"];
 
 // The pages for each design and each item inside a service are created by tools/build.js from the data files.
 // They live in these folders, e.g. designs/scaffolder-sideboard.html (shown as /designs/scaffolder-sideboard).
-var ITEM_FOLDERS = { design: "designs", service: "services" };
+var ITEM_FOLDERS = { design: "designs" };
 
 // address of a page
 function pageUrl(key) {
   if (!PAGES[key]) { console.warn("Unknown page key: " + key); return "#"; }
   return PAGES[key].file;
 }
-// address of one design ("design") or one item inside a service ("service")
-function itemUrl(type, id) { return ITEM_FOLDERS[type] + "/" + encodeURIComponent(id) + ".html"; }
+// address of one design ("design") or one item inside a service ("service", plus that service's key such as "cad-design").
+// Items sit inside their service's folder, e.g. services/cad-design/technical-modelling.html
+function itemUrl(type, id, service) {
+  var folder = type === "design" ? ITEM_FOLDERS.design : (PAGES[service] ? PAGES[service].file.replace(/\.html$/, "") : "services");
+  return folder + "/" + encodeURIComponent(id) + ".html";
+}
 function isLocal() { return location.protocol === "file:" || /^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname); }
 function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&amp;") : key; }
 
 (function () {
-  // which nav item is "current": service pages and their items count as Services, designs count as Designs
-  var file = location.pathname.split("/").pop() || "index.html";
-  if (!/\.html$/.test(file)) file += ".html";   // clean URLs (/services) still match
-  var segs = location.pathname.split("/").filter(Boolean), folder = segs.length > 1 ? segs[segs.length - 2] : "";
-  var key = Object.keys(PAGES).filter(function (k) { return PAGES[k].file === file; })[0];
-  var current = folder === ITEM_FOLDERS.design ? "designs" : folder === ITEM_FOLDERS.service ? "services"
-    : { "product-design": "services", "cad-design": "services", "3d-visualisation": "services" }[key] || key;
+  // which nav item is "current": anything under /services counts as Services, anything under /designs counts as Designs
+  var p = location.pathname.replace(/\.html$/, "").replace(/\/$/, ""), segs = p.split("/").filter(Boolean);
+  var key = Object.keys(PAGES).filter(function (k) {
+    var f = PAGES[k].file.replace(/\.html$/, "");
+    return f === "index" ? (p === "" || /\/index$/.test(p)) : (p === "/" + f || p.slice(-(f.length + 1)) === "/" + f);
+  })[0];
+  var current = segs.indexOf(ITEM_FOLDERS.design) > -1 ? "designs" : segs.indexOf("services") > -1 ? "services" : key;
 
   window.writeHeader = function () {
     var links = NAV.map(function (k) {

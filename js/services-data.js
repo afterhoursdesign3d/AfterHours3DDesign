@@ -11,7 +11,7 @@
             "cad-design"       -> appears on the CAD Design page
             "3d-visualisation" -> appears on the 3D Visualisation page
    If a service has no items, its "Within ..." section is hidden automatically.
-   Every item gets its own page at services/ITS-ID (created by tools/build.js when the site is built)
+   Every item gets its own page inside its service, e.g. services/cad-design/ITS-ID (created automatically when you push)
    =========================================================== */
 const SERVICE_WORK = [
   {

@@ -12,6 +12,6 @@ var items=SERVICE_WORK.filter(function(w){return w.service===key;});
 if(!sp||!PAGES[key]||!items.length){box.remove();return;}   // nothing to show: the whole section disappears
 box.innerHTML='<h2>Within '+esc(PAGES[key].title)+'</h2>'+(sp.intro?'<p class="lead">'+esc(sp.intro)+'</p>':'')+
  '<div class="work-list">'+items.map(function(w){var im=(w.images||[]).map(norm)[0];
-  return '<a class="work-row" href="'+itemUrl('service',w.id)+'"><div class="ph r32">'+(im?ph(im.src,im.alt||w.name):'')+'</div>'+
+  return '<a class="work-row" href="'+itemUrl('service',w.id,key)+'"><div class="ph r32">'+(im?ph(im.src,im.alt||w.name):'')+'</div>'+
    '<div class="work-text"><h3>'+esc(w.name)+'</h3><p>'+esc(w.shortDescription)+'</p><span class="more">Read more'+ARR+'</span></div></a>';}).join('')+'</div>';
 })();

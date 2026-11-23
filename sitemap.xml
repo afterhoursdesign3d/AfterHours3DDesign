@@ -3,9 +3,9 @@
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/</loc></url>
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/designs</loc></url>
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/service-product-design</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/service-cad-design</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/service-3d-visualisation</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/product-design</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/cad-design</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/3d-visualisation</loc></url>
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/about</loc></url>
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/pricing</loc></url>
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/contact</loc></url>
@@ -13,10 +13,11 @@
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/designs/example-table</loc></url>
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/designs/example-lamp</loc></url>
   <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/designs/example-shelf</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/product-renders</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/interior-visualisation</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/technical-modelling</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/manufacturing-drawings</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/concept-development</loc></url>
-  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/prototyping-support</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/designs/example</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/3d-visualisation/product-renders</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/3d-visualisation/interior-visualisation</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/cad-design/technical-modelling</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/cad-design/manufacturing-drawings</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/product-design/concept-development</loc></url>
+  <url><loc>https://afterhours3ddesign.afterhours-design3d.workers.dev/services/product-design/prototyping-support</loc></url>
 </urlset>

@@ -18,7 +18,7 @@
 
 **Page names and links:** every link to a page comes from the `PAGES` list at the top of `js/layout.js`. To rename a page, rename the file, then change its `file` there. Nav, footer, buttons, cards and back links all follow. In HTML, write links as `<a data-page="contact">Get a quote</a>`.
 
-**Analytics:** Cloudflare Web Analytics (no cookies, so no banner) loads on every page using `SITE.analyticsToken` in `js/layout.js`. The Cookie Policy link is hidden: set `--cookie-link: inline;` at the top of `css/style.css` to show it.
+**Analytics (Google Analytics 4):** paste your measurement ID (like `G-XXXXXXXXXX`) into `googleAnalyticsId` in `js/layout.js`. A cookie banner appears at the bottom of the screen, and Google Analytics only loads after a visitor presses Accept. The choice is stored in their browser (no server needed). Leave the ID blank to switch analytics and the banner off. The Cookie Policy page should list the Google Analytics cookies (`_ga` and `_ga_<your id>`).
 
 **Video and image sizes:** hero video 1920x1080, 24-30fps, H.264 MP4, no audio, 8-15 second loop, under about 6MB. A second `hero-mobile.mp4` at 1280x720, under about 2.5MB, is used on phones. Photos: 4:5 design images about 1600x2000, 4:3 gallery images about 1600x1200, saved as WebP or JPG at about 80% quality (150-300KB each).
 

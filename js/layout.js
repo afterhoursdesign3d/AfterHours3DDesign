@@ -17,9 +17,9 @@ var SITE = {
   // EDIT: true = hide ".html" in links and the address bar (services.html shows as /services).
   // It switches itself off when you open the files locally, so local testing still works.
   cleanUrls: true,
-  // EDIT: Cloudflare Web Analytics token (free, uses no cookies, so no cookie banner is needed).
-  // Cloudflare dashboard > Web Analytics > your site > the "token" in the snippet. Leave "" to turn it off.
-  analyticsToken: "673107ce73df44b6b84a8cb74bf83a83",
+  // EDIT: Google Analytics 4 measurement ID, like "G-XXXXXXXXXX" (see the README for step-by-step setup).
+  // Nothing loads until a visitor presses Accept on the cookie banner. Leave "" to turn analytics off (and hide the banner).
+  googleAnalyticsId: "",
   // EDIT: footer description
   footerText: "Design studio also offering Product Design, CAD and 3D Visualisation services."
 };
@@ -103,8 +103,9 @@ function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&a
       '<div><h3>Contact</h3><a href="mailto:' + SITE.email + '">' + SITE.email + '</a></div></div>' +
       '<div class="foot-base"><span>&copy; <span data-year></span> After Hours Design</span><span class="legal">' +
       '<a href="' + pageUrl("privacy") + '">' + pageTitle("privacy") + '</a><a href="' + pageUrl("terms") + '">' + pageTitle("terms") + '</a>' +
-      /* the Cookie Policy link is shown/hidden with --cookie-link at the top of css/style.css */
-      '<a href="' + pageUrl("cookies") + '" class="cookie-link">' + pageTitle("cookies") + '</a></span></div></div></footer>');
+      /* the Cookie Policy and Cookie settings links are shown/hidden with --cookie-link at the top of css/style.css */
+      '<a href="' + pageUrl("cookies") + '" class="cookie-link">' + pageTitle("cookies") + '</a>' +
+      '<a href="#" class="cookie-link" data-cookie-settings>Cookie settings</a></span></div></div></footer>');
   };
 
   document.addEventListener("DOMContentLoaded", function () {

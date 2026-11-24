@@ -15,14 +15,15 @@
 <title>Contact | After Hours Design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Rubik:wght@600;800&display=swap" rel="stylesheet">
-<!-- EDIT: favicon files live in /assets (favicon.svg adapts to light and dark mode). Change the ?v= number to force browsers to reload it -->
-<link rel="icon" href="favicon.ico?v=3" sizes="32x32"><link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3"><link rel="stylesheet" href="css/style.css"></head>
-<body data-header="hide-on-scroll" data-footer="no-follow">
+<!-- EDIT: favicon files are in the site root and /assets (favicon.svg adapts to light and dark mode). Google needs the ICO and the 96px PNG (multiples of 48px), so keep them. Don't add ?v= numbers: changing the address slows Google down. -->
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/assets/favicon-96.png" type="image/png" sizes="96x96"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" sizes="any"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="stylesheet" href="css/style.css"></head>
+<body data-header="hide-on-scroll">
 <a class="skip" href="#main">Skip to content</a>
 <script src="js/layout.js"></script><script>writeHeader();</script>
 <main id="main">
 <section class="container split page-head contact-split"><div class="contact-intro"><h1>Contact us</h1>
-<p class="lead">Have an idea, a need for our services, or a general query? Get in touch, we would love to hear from you. If you haven't had a reply after two business days, please assume the form isn't working and email us directly.</p>
+<div class="contact-copy"><p>Have an idea, a need for our services, or a general query? Get in touch, we would love to hear from you.</p>
+<p>If you haven't had a reply after two business days, please assume the form isn't working and email us directly.</p></div>
 </div>
 <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
 <!-- ================================================= -->

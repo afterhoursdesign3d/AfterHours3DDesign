@@ -5,13 +5,13 @@
    =========================================================== */
 var SITE = {
   // EDIT: contact email (used in the footer, the contact page and the form error message)
-  email: "hello@yourdomain.com",
+  email: "nathan@afterhours3d.co.uk",
   // EDIT: social links
   tiktok: "https://www.tiktok.com/@afterhours.design3d",
   instagram: "https://www.instagram.com/afterhours.design3d/",
   // EDIT: your website address, no slash at the end. When the site is built it is copied into every page's
   // search and share tags and the sitemap, so this is the only place to change it when you get your real domain.
-  url: "https://afterhours3ddesign.afterhours-design3d.workers.dev",
+  url: "https://afterhours3d.co.uk",
   // EDIT: where you work from and who you serve. Used for search engines (structured data).
   place: { city: "Hemel Hempstead", region: "Hertfordshire", country: "GB", areaServed: ["Hemel Hempstead", "Hertfordshire", "London"] },
   // EDIT: true = hide ".html" in links and the address bar (services.html shows as /services).
@@ -21,7 +21,7 @@ var SITE = {
   // Nothing loads until a visitor presses Accept on the cookie banner. Leave "" to turn analytics off (and hide the banner).
   googleAnalyticsId: "",
   // EDIT: footer description
-  footerText: "Design studio also offering Product Design, CAD and 3D Visualisation services."
+  footerText: "Independent design studio also offering Product Design, CAD and 3D Visualisation services."
 };
 
 /* ===========================================================

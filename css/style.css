@@ -175,3 +175,18 @@ body:has(.work-sec) .site-footer{border-top:0}
 /* ===== v14: footer description kept away from the Pages column on wide screens ===== */
 @media(min-width:901px){.foot-grid>div:first-child p{max-width:28ch}}
 
+/* ===== v16: menu button colour (phones were tinting it blue) + black bars on the home (video) page ===== */
+.menu-btn{color:var(--text);-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent}
+/* home page only: black header once you scroll, black footer. Every other page stays white. */
+body[data-header=transparent] .site-header .menu-btn{color:#fff;border-color:#fff}
+body[data-header=transparent] .site-header.solid{background:#0A0A0A;border-color:#0A0A0A;color:#fff}
+body[data-header=transparent] .site-header.solid .logo-dark{display:none}
+body[data-header=transparent] .site-header.solid .logo-light{display:block}
+body[data-header=transparent] .site-header.solid .nav a{color:#fff}
+body[data-header=transparent] .site-footer{background:#0A0A0A;color:#fff;border-top-color:#0A0A0A}
+body[data-header=transparent] .site-footer .foot-grid p,body[data-header=transparent] .site-footer .foot-base{color:#A8A8A8}
+body[data-header=transparent] .site-footer .foot-base{border-top-color:#2A2A2A}
+@media(max-width:900px){
+body[data-header=transparent] .nav{background:#0A0A0A;border-left-color:#2A2A2A}
+body[data-header=transparent] .nav a{color:#fff!important}
+body[data-header=transparent] .nav a[aria-current]{background:rgba(255,255,255,.14)}}

@@ -111,10 +111,11 @@ function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&a
   window.writeFooter = function () {
     // a page can hide the Follow column with <body data-footer="no-follow"> (the contact page does)
     var noFollow = document.body.dataset.footer === "no-follow";
+    var darkFooter = document.body.dataset.header === "transparent";   // the home (video) page has a black footer, so it needs the white logo
     var links = NAV.map(function (k) { return '<a href="' + pageUrl(k) + '">' + pageTitle(k) + '</a>'; }).join("");
     document.write(
       '<footer class="site-footer"><div class="container"><div class="foot-grid' + (noFollow ? ' foot-grid--3' : '') + '">' +
-      '<div><img src="assets/logo.svg" alt="' + SITE.name + '" class="foot-logo"><p>' + SITE.footerText + '</p></div>' +
+      '<div><img src="' + (darkFooter ? "assets/logo-white.svg" : "assets/logo.svg") + '" alt="' + SITE.name + '" class="foot-logo"><p>' + SITE.footerText + '</p></div>' +
       '<div><h3>Pages</h3>' + links + '</div>' +
       (noFollow ? '' : '<div><h3>Follow</h3><a href="' + SITE.tiktok + '">TikTok</a><a href="' + SITE.instagram + '">Instagram</a></div>') +
       '<div><h3>Contact</h3><a href="mailto:' + SITE.email + '">' + SITE.email + '</a></div></div>' +

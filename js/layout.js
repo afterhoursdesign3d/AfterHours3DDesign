@@ -71,6 +71,19 @@ function isLocal() { return location.protocol === "file:" || /^(localhost|127\.|
 function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&amp;") : key; }
 
 /* ===========================================================
+   BROWSER BAR COLOUR (home page only)
+   Chrome on Android and older iPhones colour their top bar from this tag. Newer Safari ignores it and uses the page
+   background instead, which is set in css/style.css (search for "v17").
+   =========================================================== */
+(function () {
+  if (typeof document === "undefined" || !document.head || !document.body) return;
+  if (document.body.dataset.header !== "transparent") return;
+  var m = document.createElement("meta");
+  m.name = "theme-color"; m.content = "#0A0A0A";
+  document.head.appendChild(m);
+})();
+
+/* ===========================================================
    BROWSER TAB ICON
    The pages list the white-circle icons (these are what Google reads for search results).
    Real browsers then swap in assets/favicon-tab.svg, the black/white logo that switches with light/dark mode.
@@ -111,11 +124,10 @@ function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&a
   window.writeFooter = function () {
     // a page can hide the Follow column with <body data-footer="no-follow"> (the contact page does)
     var noFollow = document.body.dataset.footer === "no-follow";
-    var darkFooter = document.body.dataset.header === "transparent";   // the home (video) page has a black footer, so it needs the white logo
     var links = NAV.map(function (k) { return '<a href="' + pageUrl(k) + '">' + pageTitle(k) + '</a>'; }).join("");
     document.write(
       '<footer class="site-footer"><div class="container"><div class="foot-grid' + (noFollow ? ' foot-grid--3' : '') + '">' +
-      '<div><img src="' + (darkFooter ? "assets/logo-white.svg" : "assets/logo.svg") + '" alt="' + SITE.name + '" class="foot-logo"><p>' + SITE.footerText + '</p></div>' +
+      '<div><img src="assets/logo.svg" alt="' + SITE.name + '" class="foot-logo"><p>' + SITE.footerText + '</p></div>' +
       '<div><h3>Pages</h3>' + links + '</div>' +
       (noFollow ? '' : '<div><h3>Follow</h3><a href="' + SITE.tiktok + '">TikTok</a><a href="' + SITE.instagram + '">Instagram</a></div>') +
       '<div><h3>Contact</h3><a href="mailto:' + SITE.email + '">' + SITE.email + '</a></div></div>' +

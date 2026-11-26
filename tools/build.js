@@ -53,7 +53,7 @@ function pageShell(o, main, scripts) {
 <meta name="description" content="${E(o.desc)}">
 <link rel="canonical" href="${E(o.url)}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="After Hours Design">
+<meta property="og:site_name" content="${E(SITE.name)}">
 <meta property="og:title" content="${E(o.title)}">
 <meta property="og:description" content="${E(o.desc)}">
 <meta property="og:url" content="${E(o.url)}">
@@ -98,7 +98,7 @@ function serviceMain(w) {
     (gal.length ? `\n<section class="container gallery-sec${w.galleryText ? "" : " no-text"}">${w.galleryText ? `<p>${E(w.galleryText)}</p>` : ""}<div class="gallery">${gal.map(g => `<div class="ph r43">${img(g, w.name)}</div>`).join("")}</div></section>` : "");
 }
 
-const brand = { "@type": "Organization", name: "After Hours Design", url: base + "/" };
+const brand = { "@type": "Organization", name: SITE.name, url: base + "/" };
 function priceNumber(p) { const m = String(p || "").replace(/,/g, "").match(/[\d.]+/); return m ? parseFloat(m[0]) : 0; }
 
 console.log("Building pages...");
@@ -113,7 +113,7 @@ data.DESIGNS.forEach(d => {
   const im = (d.images || []).map(norm);
   const ld = (d.status === "available" && priceNumber(d.price) > 0) ? { "@context": "https://schema.org", "@type": "Product", name: d.name, description: d.shortDescription,
     image: im.map(i => abs(i.src)), brand, offers: { "@type": "Offer", price: priceNumber(d.price), priceCurrency: "GBP", availability: "https://schema.org/InStock", url: d.buyUrl || itemAddress("design", d.id) } } : null;
-  write(`${ITEM_FOLDERS.design}/${d.id}.html`, pageShell({ baseHref: "../", title: `${d.name} | After Hours Design`, desc: d.shortDescription, url: itemAddress("design", d.id),
+  write(`${ITEM_FOLDERS.design}/${d.id}.html`, pageShell({ baseHref: "../", title: `${d.name} | ${SITE.name}`, desc: d.shortDescription, url: itemAddress("design", d.id),
     image: shareImage(im), imageAlt: im[0] && im[0].alt || d.name, ld }, designMain(d), '<script src="js/gallery.js"></script>'));
   made++;
 });
@@ -122,7 +122,7 @@ data.SERVICE_WORK.forEach(w => {
   if (!/^[a-z0-9-]+$/.test(w.id)) warn(`item id "${w.id}" should be lowercase letters, numbers and hyphens only`);
   const im = (w.images || []).map(norm);
   const ld = { "@context": "https://schema.org", "@type": "Service", name: w.name, description: w.shortDescription, provider: brand, areaServed: SITE.place.areaServed };
-  write(`${itemPath("service", w.id, w.service)}.html`, pageShell({ baseHref: "../../", title: `${w.name} | After Hours Design`, desc: w.shortDescription, url: itemAddress("service", w.id, w.service),
+  write(`${itemPath("service", w.id, w.service)}.html`, pageShell({ baseHref: "../../", title: `${w.name} | ${SITE.name}`, desc: w.shortDescription, url: itemAddress("service", w.id, w.service),
     image: shareImage(im), imageAlt: im[0] && im[0].alt || w.name, ld }, serviceMain(w), ""));
   made++;
 });
@@ -142,18 +142,20 @@ hand.forEach(f => {
   const here = base + "/" + (f === "index.html" ? "" : cleanFile(f));
   block = block.replace(/(<link rel="canonical" href=")[^"]*(")/, (x, a, c) => a + here + c).replace(/(<meta property="og:url" content=")[^"]*(")/, (x, a, c) => a + here + c);
   if (f === "index.html") {
-    const ld = { "@context": "https://schema.org", "@type": "ProfessionalService", name: "After Hours Design", url: base + "/", logo: base + "/assets/favicon-192.png",
+    const ld = { "@context": "https://schema.org", "@type": "ProfessionalService", name: SITE.name, url: base + "/", logo: base + "/assets/favicon-192.png",
       image: base + "/assets/social-card.png", sameAs: [SITE.tiktok, SITE.instagram],
       address: { "@type": "PostalAddress", addressLocality: SITE.place.city, addressRegion: SITE.place.region, addressCountry: SITE.place.country }, areaServed: SITE.place.areaServed };
     if (!/yourdomain/.test(SITE.email)) ld.email = SITE.email;
-    block = block.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '<script type="application/ld+json">' + JSON.stringify(ld) + "</script>");
+    // WebSite data tells Google the name to show above your address in search results (SITE.name in js/layout.js)
+    const site = { "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: base + "/" };
+    block = block.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '<script type="application/ld+json">' + JSON.stringify([ld, site]) + "</script>");
   }
   const out = s.slice(0, start) + block + s.slice(end);
   if (out !== s) write(f, out);
 });
 
 // ---- sitemap.xml and robots.txt
-const EXCLUDE = ["privacy", "terms", "cookies"];   // pages left out of the sitemap. Remove a key to include it.
+const EXCLUDE = ["privacy", "terms"];   // pages left out of the sitemap. Remove a key to include it.
 const urls = Object.keys(PAGES).filter(k => !EXCLUDE.includes(k)).map(k => k === "home" ? base + "/" : base + "/" + cleanFile(PAGES[k].file));
 data.DESIGNS.forEach(d => urls.push(itemAddress("design", d.id)));
 data.SERVICE_WORK.filter(w => PAGES[w.service]).forEach(w => urls.push(itemAddress("service", w.id, w.service)));

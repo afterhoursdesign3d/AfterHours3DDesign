@@ -4,6 +4,8 @@
    All page links on the site come from the PAGES list below.
    =========================================================== */
 var SITE = {
+  // EDIT: your business name. Used in the header/footer, page titles, share tags and the name Google shows for your site.
+  name: "After Hours 3D Design",
   // EDIT: contact email (used in the footer, the contact page and the form error message)
   email: "nathan@afterhours3d.co.uk",
   // EDIT: social links
@@ -17,9 +19,8 @@ var SITE = {
   // EDIT: true = hide ".html" in links and the address bar (services.html shows as /services).
   // It switches itself off when you open the files locally, so local testing still works.
   cleanUrls: true,
-  // EDIT: Google Analytics 4 measurement ID, like "G-XXXXXXXXXX" (see the README for step-by-step setup).
-  // Nothing loads until a visitor presses Accept on the cookie banner. Leave "" to turn analytics off (and hide the banner).
-  googleAnalyticsId: "",
+  // EDIT: Cloudflare Web Analytics token (cookieless, so no cookie banner is needed). Leave "" to turn analytics off.
+  analyticsToken: "673107ce73df44b6b84a8cb74bf83a83",
   // EDIT: footer description
   footerText: "Independent design studio also offering Product Design, CAD and 3D Visualisation services."
 };
@@ -46,8 +47,7 @@ var PAGES = {
   "pricing":          { file: "pricing.html",                title: "Pricing" },
   "contact":          { file: "contact.html",                title: "Contact" },
   "privacy":          { file: "privacy.html",                title: "Privacy Policy" },
-  "terms":            { file: "terms.html",                  title: "Terms & Conditions" },
-  "cookies":          { file: "cookies.html",                title: "Cookie Policy" }
+  "terms":            { file: "terms.html",                  title: "Terms & Conditions" }
 };
 // EDIT: which pages appear in the header and footer nav, in order (use the keys above)
 var NAV = ["designs", "services", "about", "pricing", "contact"];
@@ -86,7 +86,7 @@ function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&a
     document.write(
       '<header class="site-header"><div class="container bar">' +
       /* EDIT: replace assets/logo.svg and assets/logo-white.svg with your logo files */
-      '<a class="logo" href="' + pageUrl("home") + '"><img class="logo-dark" src="assets/logo.svg" alt="After Hours Design"><img class="logo-light" src="assets/logo-white.svg" alt=""></a>' +
+      '<a class="logo" href="' + pageUrl("home") + '"><img class="logo-dark" src="assets/logo.svg" alt="' + SITE.name + '"><img class="logo-light" src="assets/logo-white.svg" alt=""></a>' +
       '<button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>' +
       '<nav id="nav" class="nav">' + links + '</nav></div></header>');
   };
@@ -97,15 +97,13 @@ function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&a
     var links = NAV.map(function (k) { return '<a href="' + pageUrl(k) + '">' + pageTitle(k) + '</a>'; }).join("");
     document.write(
       '<footer class="site-footer"><div class="container"><div class="foot-grid' + (noFollow ? ' foot-grid--3' : '') + '">' +
-      '<div><img src="assets/logo.svg" alt="After Hours Design" class="foot-logo"><p>' + SITE.footerText + '</p></div>' +
+      '<div><img src="assets/logo.svg" alt="' + SITE.name + '" class="foot-logo"><p>' + SITE.footerText + '</p></div>' +
       '<div><h3>Pages</h3>' + links + '</div>' +
       (noFollow ? '' : '<div><h3>Follow</h3><a href="' + SITE.tiktok + '">TikTok</a><a href="' + SITE.instagram + '">Instagram</a></div>') +
       '<div><h3>Contact</h3><a href="mailto:' + SITE.email + '">' + SITE.email + '</a></div></div>' +
-      '<div class="foot-base"><span>&copy; <span data-year></span> After Hours Design</span><span class="legal">' +
+      '<div class="foot-base"><span>&copy; <span data-year></span> ' + SITE.name + '</span><span class="legal">' +
       '<a href="' + pageUrl("privacy") + '">' + pageTitle("privacy") + '</a><a href="' + pageUrl("terms") + '">' + pageTitle("terms") + '</a>' +
-      /* the Cookie Policy and Cookie settings links are shown/hidden with --cookie-link at the top of css/style.css */
-      '<a href="' + pageUrl("cookies") + '" class="cookie-link">' + pageTitle("cookies") + '</a>' +
-      '<a href="#" class="cookie-link" data-cookie-settings>Cookie settings</a></span></div></div></footer>');
+      '</span></div></div></footer>');
   };
 
   document.addEventListener("DOMContentLoaded", function () {

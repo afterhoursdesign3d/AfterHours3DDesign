@@ -24,3 +24,5 @@
 **New pages for designs and service items are created automatically.** When you push a change to GitHub, `.github/workflows/build.yml` runs `node tools/build.js`, which creates a page for every design (`/designs/<id>`) and every service item (`/services/<service>/<id>`), updates the sitemap and the search/share tags, and commits the result. Wait a minute or two after pushing for the new pages to appear. Don't edit the files in `designs/` or in `services/<service>/` by hand. To use it, the repo needs Settings > Actions > General > Workflow permissions set to allow the workflow to write (the workflow asks for this itself, but some accounts need it enabled).
 
 **Page addresses:** `/services/product-design`, `/services/3d-visualisation/<item>`, `/designs/<design>`. To rename a service's address, change its `file` in `PAGES` in `js/layout.js` and rename its file and folder to match.
+
+**Favicons:** the circle icons listed in each page `<head>` are for Google and other places that need a fixed image. In normal browsers `js/layout.js` swaps in `assets/favicon-tab.svg` (black/white logo that follows light/dark mode). Crawlers, Safari and iPhone/iPad keep the circle.

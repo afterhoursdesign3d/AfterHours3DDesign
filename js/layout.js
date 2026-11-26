@@ -70,6 +70,23 @@ function itemUrl(type, id, service) {
 function isLocal() { return location.protocol === "file:" || /^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname); }
 function pageTitle(key) { return PAGES[key] ? PAGES[key].title.replace(/&/g, "&amp;") : key; }
 
+/* ===========================================================
+   BROWSER TAB ICON
+   The pages list the white-circle icons (these are what Google reads for search results).
+   Real browsers then swap in assets/favicon-tab.svg, the black/white logo that switches with light/dark mode.
+   Search engines/crawlers, Safari and iPhone/iPad browsers are skipped and keep the circle icon.
+   =========================================================== */
+(function () {
+  if (typeof navigator === "undefined" || !document.head) return;   // (the page builder runs this file without a browser)
+  var ua = navigator.userAgent || "";
+  if (/bot|crawl|spider|slurp|lighthouse|preview|facebookexternalhit/i.test(ua)) return;
+  if (/iPhone|iPad|iPod/.test(ua) || /^((?!chrome|chromium|android).)*safari/i.test(ua)) return;
+  document.querySelectorAll('link[rel~="icon"]').forEach(function (l) { l.parentNode.removeChild(l); });
+  var tab = document.createElement("link");
+  tab.rel = "icon"; tab.type = "image/svg+xml"; tab.href = "/assets/favicon-tab.svg";
+  document.head.appendChild(tab);
+})();
+
 (function () {
   // which nav item is "current": anything under /services counts as Services, anything under /designs counts as Designs
   var p = location.pathname.replace(/\.html$/, "").replace(/\/$/, ""), segs = p.split("/").filter(Boolean);
